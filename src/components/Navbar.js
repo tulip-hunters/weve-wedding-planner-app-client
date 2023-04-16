@@ -5,6 +5,7 @@ import VenuesListPage from "../pages/VenuesListPage";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import CreateVenuePage from "../pages/CreateVenuePage";
+import ProfilePage from "../pages/ProfilePage";
 
 function Navbar() {
    // Subscribe to the AuthContext to gain access to
@@ -17,7 +18,8 @@ function Navbar() {
         <nav>
       <Link to="/">WeVe</Link>  | {" "}
       <Link to="/venues" element={ <VenuesListPage /> }> All Venues </Link> | {" "}
-      <Link to="/venues/create" element={ <CreateVenuePage /> }>Create a new Venue </Link>
+      <Link to="/venues/create" element={ <CreateVenuePage /> }>Create a new Venue </Link>  | {" "}
+      <Link to="/profilepage" element={ <ProfilePage />} > Profile Page </Link>  | {" "}
       
       {isLoggedIn && (
         <>
@@ -31,6 +33,7 @@ function Navbar() {
         <>
           <Link to="/register" element={ <RegisterPage /> } > Register </Link>  | {" "}
           <Link to="/login" element={ <LoginPage /> } > Login </Link>  | {" "}
+         
         </>
       )}      
  

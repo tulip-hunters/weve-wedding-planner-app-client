@@ -10,6 +10,7 @@ import VenuesListPage from './pages/VenuesListPage';
 import VenueDetailsPage from './pages/VenueDetailsPage';
 import EditVenuePage from './pages/EditVenuePage';
 import CreateVenuePage from './pages/CreateVenuePage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
     <Route path="/venues/:venueId" element={<VenueDetailsPage />}></Route>
     <Route path="/venues/edit/:venueId" element={ <EditVenuePage />} />
     <Route path='/venues/create' element={ <CreateVenuePage />} />
+    <Route path='/profilepage' element={ <ProfilePage /> } />
    </Routes>
     </div>
   );
