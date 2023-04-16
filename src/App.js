@@ -9,6 +9,7 @@ import VenuesListPage from './pages/VenuesListPage';
 // import { useEffect, useState } from 'react';
 import VenueDetailsPage from './pages/VenueDetailsPage';
 import EditVenuePage from './pages/EditVenuePage';
+import CreateVenuePage from './pages/CreateVenuePage';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
     <Route path="register" element={ <RegisterPage /> } />
     <Route path="/venues/:venueId" element={<VenueDetailsPage />}></Route>
     <Route path="/venues/edit/:venueId" element={ <EditVenuePage />} />
+    <Route path='/venues/create' element={ <CreateVenuePage />} />
    </Routes>
     </div>
   );

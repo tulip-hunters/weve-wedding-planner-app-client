@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import VenuesListPage from "../pages/VenuesListPage";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
+import CreateVenuePage from "../pages/CreateVenuePage";
 
 function Navbar() {
    // Subscribe to the AuthContext to gain access to
@@ -16,6 +17,7 @@ function Navbar() {
         <nav>
       <Link to="/">WeVe</Link>  | {" "}
       <Link to="/venues" element={ <VenuesListPage /> }> All Venues </Link> | {" "}
+      <Link to="/venues/create" element={ <CreateVenuePage /> }>Create a new Venue </Link>
       
       {isLoggedIn && (
         <>

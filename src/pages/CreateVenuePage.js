@@ -1,9 +1,9 @@
-
+import AddVenue from "../components/AddVenue";
 
 function CreateVenuePage() {
   return (
     <div>
-     <h1>This is the Create Venue Page</h1>
+     <AddVenue />
     </div>
   );
 }
