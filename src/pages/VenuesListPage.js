@@ -15,7 +15,7 @@ function VenuesListPage() {
     axios
       .get(`${process.env.REACT_APP_APIURL}/api/venues`)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         setVenues(response.data);
       })
       .catch((error) => console.log(error));
@@ -31,7 +31,8 @@ function VenuesListPage() {
       <div>
         {venues.map((venueDetails) => {
           return (
-            <>
+            <div key={venueDetails._id}>
+            
               <div>
                 {venueDetails.imageUrl ? (
                   <Image src={venueDetails.imageUrl} alt={venueDetails.name} style={{ width: '400px', height: 'auto' }}/>
@@ -39,13 +40,16 @@ function VenuesListPage() {
                   <Image src={defaultImageUrl} alt={venueDetails.name} style={{ width: '400px', height: 'auto' }}/>
                 )}
               </div>
+              <div>
               <h2>{venueDetails.name}</h2>
               <h4>{venueDetails.address}</h4>
               <p> € {venueDetails.price}</p>
               <Link to={`/venues/${venueDetails._id}`}>More Details</Link>
               <br />
               <br />
-            </>
+              </div>
+              
+            </div>
           );
         })}
       </div>

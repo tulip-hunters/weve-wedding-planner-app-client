@@ -34,7 +34,9 @@ function AddReservation(props) {
 
     // Check if guestsNumber is greater than the maximum venue capacity
     if (guestsNumberInt > venueDetails.capacity) {
-      alert(`Number of guests exceeds the maximum venue capacity. Please provider number under ${venueDetails.capacity}`);
+      alert(
+        `Number of guests exceeds the maximum venue capacity. Please provide a number under ${venueDetails.capacity}`
+      );
       return;
     }
 
@@ -42,7 +44,7 @@ function AddReservation(props) {
       title,
       weddingDate,
       guestsNumber: guestsNumberInt,
-      user,
+      user: user._id, // Use user._id instead of user, as user is an object
       venue: props.venueId,
     };
     const storedToken = localStorage.getItem("authToken");
@@ -58,6 +60,7 @@ function AddReservation(props) {
       })
       .catch((error) => console.log(error));
   };
+  
 
   return (
     <div className="card pt-4 d-flex justify-content-center">
@@ -65,38 +68,50 @@ function AddReservation(props) {
         <>
           <h3>Add New Wedding Reservation</h3>
           <form onSubmit={handleSubmit}>
-            <div className="col d-flex flex-column justify-content-center col-12 col-md-12 col-lg-12 mb-2 p-4">
-            <label>Reservation title:</label>
-              <input
-                type="titexttle"
-                name="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-
-              <label>Wedding Date:</label>
-              <input
-                type="date"
-                name="weddingDate"
-                value={weddingDate}
-                onChange={(e) => setWeddingDate(e.target.value)}
-              />
-
-              <label>Number of Guests</label>
-              <input
-                type="number"
-                name="guestsNumber"
-                value={guestsNumber}
-                min="1"
-                onChange={(e) => setGuestsNumber(e.target.value)}
-              />
-              {user !== user._id ? (
-                <button className="reservation-btn" type="submit">
-                  Add Reservation
-                </button>
-              ) : (
-                <p className="mt-4">You are the owner of this venue</p>
-              )}
+            <div className="row g-4">
+              <div className="col-sm">
+                <input
+                  type="text"
+                  name="title"
+                  value={title}
+                  className="form-control"
+                  placeholder="Your names"
+                  aria-label="title"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <div class="col-sm">
+                <input
+                  type="date"
+                  name="weddingDate"
+                  value={weddingDate}
+                  className="form-control"
+                  placeholder="Wedding Date"
+                  aria-label="weddingDate"
+                  onChange={(e) => setWeddingDate(e.target.value)}
+                />
+              </div>
+              <div class="col-sm">
+                <input
+                  type="number"
+                  name="guestsNumber"
+                  className="form-control"
+                  value={guestsNumber}
+                  min="1"
+                  placeholder="Number of guests"
+                  aria-label="guestsNumber"
+                  onChange={(e) => setGuestsNumber(e.target.value)}
+                />
+              </div>
+              <div>
+                {user !== user._id ? (
+                  <button className="btn btn-primary col-sm" type="submit">
+                    Add Reservation
+                  </button>
+                ) : (
+                  <p className="mt-4">You are the owner of this venue</p>
+                )}
+              </div>
             </div>
           </form>
         </>
@@ -108,4 +123,3 @@ function AddReservation(props) {
 }
 
 export default AddReservation;
-
