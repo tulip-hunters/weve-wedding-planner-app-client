@@ -10,9 +10,8 @@ function AddReservation(props) {
   const [guestsNumber, setGuestsNumber] = useState("");
   const [venueDetails, setVenueDetails] = useState(null);
 
-  // Fetch venueDetails from API or context and set it in state
-  useEffect(() => {
-    // Fetch venueDetails from API or context and set it in state
+// Fetch venueDetails from API or context and set it in state
+useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_APIURL}/api/venues/${props.venueId}`)
       .then((response) => {
@@ -20,18 +19,18 @@ function AddReservation(props) {
       })
       .catch((error) => console.log(error));
   }, [props.venueId]);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (!venueDetails) {
       // Handle if venueDetails is not available yet
       return;
     }
-
+  
     // Convert guestsNumber to a number
     const guestsNumberInt = parseInt(guestsNumber, 10);
-
+  
     // Check if guestsNumber is greater than the maximum venue capacity
     if (guestsNumberInt > venueDetails.capacity) {
       alert(
@@ -39,7 +38,7 @@ function AddReservation(props) {
       );
       return;
     }
-
+  
     const requestBody = {
       title,
       weddingDate,
@@ -48,7 +47,7 @@ function AddReservation(props) {
       venue: props.venueId,
     };
     const storedToken = localStorage.getItem("authToken");
-
+  
     axios
       .post(`${process.env.REACT_APP_APIURL}/api/reservations`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -57,19 +56,31 @@ function AddReservation(props) {
         setTitle("");
         setWeddingDate("");
         setGuestsNumber(0);
+  
+        // Update venueDetails with new reservation
+        const newReservation = response.data;
+        setVenueDetails((prevVenueDetails) => {
+          // Check if venueDetails is null, return previous state
+          if (!prevVenueDetails) {
+            return prevVenueDetails;
+          }
+  
+          // Update venueDetails with new reservation
+          const updatedReservations = [newReservation, ...prevVenueDetails.reservations];
+          return { reservations: updatedReservations, ...prevVenueDetails };
+        });
       })
       .catch((error) => console.log(error));
   };
-  
 
   return (
     <div className="card pt-4 d-flex justify-content-center">
       {isLoggedIn ? (
         <>
           <h3>Add New Wedding Reservation</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="row g-4">
-              <div className="col-sm">
+          <form className="container" onSubmit={handleSubmit}>
+            <div className="row g-3">
+              <div className="col-3">
                 <input
                   type="text"
                   name="title"
@@ -80,7 +91,7 @@ function AddReservation(props) {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-              <div class="col-sm">
+              <div className="col-3">
                 <input
                   type="date"
                   name="weddingDate"
@@ -91,7 +102,7 @@ function AddReservation(props) {
                   onChange={(e) => setWeddingDate(e.target.value)}
                 />
               </div>
-              <div class="col-sm">
+              <div className="col-3">
                 <input
                   type="number"
                   name="guestsNumber"
@@ -103,9 +114,9 @@ function AddReservation(props) {
                   onChange={(e) => setGuestsNumber(e.target.value)}
                 />
               </div>
-              <div>
+              <div className="col-3 mx-auto">
                 {user !== user._id ? (
-                  <button className="btn btn-primary col-sm" type="submit">
+                  <button className="btn btn-primary w-100" type="submit">
                     Add Reservation
                   </button>
                 ) : (

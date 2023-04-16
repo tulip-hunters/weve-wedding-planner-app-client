@@ -1,28 +1,33 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+// import axios from "axios";
+import { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import AddReservation from "../components/AddReservation";
+import { AuthContext } from "../context/auth.context";
+import venuesService from "../services/venues.service";
 
 const defaultImageUrl =
   "https://images.pexels.com/photos/12846017/pexels-photo-12846017.jpeg";
 
 function VenueDetailsPage() {
   const { venueId } = useParams();
-
   const [venueDetails, setVenueDetails] = useState(null);
+  const { user } = useContext(AuthContext);
+
+  const getVenue = () => {
+    venuesService
+      .getVenue(venueId)
+      .then((response) => {
+        const oneVenue = response.data;
+        setVenueDetails(oneVenue);
+      })
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_APIURL + "/api/venues/" + venueId)
-      .then((response) => {
-        console.log(response);
-        setVenueDetails(response.data);
-      })
-      .catch((e) => {
-        console.log("error loading venues from API...", e);
-      });
-  }, [venueId]);
+    getVenue();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -65,40 +70,40 @@ function VenueDetailsPage() {
 
                 {/* <p className="fw-semibold">{venueDetails.comments}</p> */}
                 {/* <p className="fw-semibold">{venueDetails.likes}</p> */}
-                {/* <p className="fw-semibold">{venueDetails.reservations}</p> */}
+
                 <Link to="/venues">
                   <button>Back to all venues</button>
                 </Link>
-
-                <Link to={`/venues/edit/${venueId}`}>
-                  <button>Edit Venue</button>
-                </Link>
-                {/* <Link to={`/venues/${venueId}/reservations`}>
-                  <button>Place a reservation</button>
-                </Link> */}
+                {venueDetails && user && venueDetails.user === user._id ? (
+                  <Link to={`/venues/edit/${venueId}`}>
+                    <button>Edit Venue</button>
+                  </Link>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
             <section>
-              <AddReservation venueId={venueId} />
+              <AddReservation refreshVenue={getVenue} venueId={venueId} />
             </section>
             <section>
               {venueDetails && venueDetails.reservations.length >= 1 && (
-                <div className="row mb-2 mx-2">
-                  <div className="card align-items-center bg-light">
+                <div className="row mb-12 ">
+                  <div className="card align-items-center bg-light ">
                     <h4 className="align-items-center text-black">
                       Reservations
                     </h4>
                     {venueDetails &&
                       venueDetails.reservations.map((reservation) => (
                         <div
-                          className="card mb-5 text-black"
+                          className="card mb-8 col-6 text-black"
                           key={reservation._id}
                         >
-                          <div className="row ">
-                            <div className="row">
+                          <div className="row d-flex justify-content-between">
+                            <div className="col-6">
                               <p>Reserved for: {reservation.title}</p>
                             </div>
-                            <div>
+                            <div className="col-6">
                               <p>
                                 {new Date(
                                   reservation.weddingDate
