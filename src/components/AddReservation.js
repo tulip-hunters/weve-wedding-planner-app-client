@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 function AddReservation(props) {
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn, user, setRefresh, refresh } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [weddingDate, setWeddingDate] = useState("");
   const [guestsNumber, setGuestsNumber] = useState("");
   const [venueDetails, setVenueDetails] = useState(null);
-  const [userDetails, setUserDetails] = useState(null)
+//   const [userDetails, setUserDetails] = useState(null)
+  const navigate = useNavigate();
 
 // Fetch venueDetails from API or context and set it in state
 useEffect(() => {
@@ -28,10 +30,10 @@ useEffect(() => {
       // Handle if venueDetails is not available yet
       return;
     }
-    if (!userDetails) {
-        // Handle if venueDetails is not available yet
-        return;
-      }
+    // if (!userDetails) {
+    //     // Handle if venueDetails is not available yet
+    //     return;
+    //   }
   
     // Convert guestsNumber to a number
     const guestsNumberInt = parseInt(guestsNumber, 10);
@@ -61,6 +63,8 @@ useEffect(() => {
       setTitle("");
       setWeddingDate("");
       setGuestsNumber(0);
+      setRefresh(!refresh)
+      navigate(`/profilepage`); 
   
       // Update venueDetails with new reservation
       const newReservation = response.data;
@@ -75,17 +79,17 @@ useEffect(() => {
         return { reservations: updatedReservations, ...prevVenueDetails };
       });
   
-      // Update userDetails with new reservation
-      setUserDetails((prevUserDetails) => {
-        // Check if userDetails is null, return previous state
-        if (!prevUserDetails) {
-          return prevUserDetails;
-        }
+    //   // Update userDetails with new reservation
+    //   setUserDetails((prevUserDetails) => {
+    //     // Check if userDetails is null, return previous state
+    //     if (!prevUserDetails) {
+    //       return prevUserDetails;
+    //     }
   
-        // Update userDetails with new reservation
-        const updatedReservations = [newReservation, ...prevUserDetails.reservations];
-        return { reservations: updatedReservations, ...prevUserDetails };
-      });
+    //     // Update userDetails with new reservation
+    //     const updatedReservations = [newReservation, ...prevUserDetails.reservations];
+    //     return { reservations: updatedReservations, ...prevUserDetails };
+    //   });
     })
     .catch((error) => console.log(error));
   };
