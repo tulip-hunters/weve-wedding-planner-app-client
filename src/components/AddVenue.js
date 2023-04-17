@@ -46,7 +46,7 @@ const handleSubmit = (event) => {
             setDescription("");
             setPrice("");
             setCapacity("");
-            setOffers("");
+            setOffers([]);
             setImageUrl("");
 
             navigate('/venues')
@@ -95,9 +95,18 @@ return(
       </label>
 
       <label>
-        Offers: 
-        <input type='enum' className="form-to-create" name="offers" value={offers} onChange={(event) => {setOffers(event.target.value)}}  /> 
-      </label>
+  Offers: 
+  <select className="form-to-create" name="offers" multiple value={offers} onChange={(event) => {setOffers(Array.from(event.target.selectedOptions, option => option.value))}}>
+    <option value="dj">DJ</option>
+    <option value="jazz band">Jazz Band</option>
+    <option value="folk group">Folk Group</option>
+    <option value="photo box">Photo Box</option>
+    <option value="kids entertainer">Kids Entertainer</option>
+
+
+    {/* Add other enum values as options */}
+  </select>
+</label>
 
     <button> SAVE </button>
     </div>

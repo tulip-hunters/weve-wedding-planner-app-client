@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image";
 import AddReservation from "../components/AddReservation";
 import { AuthContext } from "../context/auth.context";
 import venuesService from "../services/venues.service";
+import axios from "axios";
 
 const defaultImageUrl =
   "https://images.pexels.com/photos/12846017/pexels-photo-12846017.jpeg";
@@ -12,7 +13,8 @@ const defaultImageUrl =
 function VenueDetailsPage() {
   const { venueId } = useParams();
   const [venueDetails, setVenueDetails] = useState(null);
-  const { user } = useContext(AuthContext);
+  const { user, isLoggedIn } = useContext(AuthContext);
+  const [userDetails, setUserDetails] = useState(null);
 
   const getVenue = () => {
     venuesService
@@ -28,6 +30,18 @@ function VenueDetailsPage() {
     getVenue();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    // Fetch user details and set it in state
+    if (isLoggedIn && user) {
+      axios
+        .get(`${process.env.REACT_APP_APIURL}/api/users/${user._id}`)
+        .then((response) => {
+          setUserDetails(response.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [isLoggedIn, user]);
 
   return (
     <>

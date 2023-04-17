@@ -9,6 +9,7 @@ function AddReservation(props) {
   const [weddingDate, setWeddingDate] = useState("");
   const [guestsNumber, setGuestsNumber] = useState("");
   const [venueDetails, setVenueDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState(null)
 
 // Fetch venueDetails from API or context and set it in state
 useEffect(() => {
@@ -27,6 +28,10 @@ useEffect(() => {
       // Handle if venueDetails is not available yet
       return;
     }
+    if (!userDetails) {
+        // Handle if venueDetails is not available yet
+        return;
+      }
   
     // Convert guestsNumber to a number
     const guestsNumberInt = parseInt(guestsNumber, 10);
@@ -49,28 +54,40 @@ useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
   
     axios
-      .post(`${process.env.REACT_APP_APIURL}/api/reservations`, requestBody, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        setTitle("");
-        setWeddingDate("");
-        setGuestsNumber(0);
+    .post(`${process.env.REACT_APP_APIURL}/api/reservations`, requestBody, {
+      headers: { Authorization: `Bearer ${storedToken}` },
+    })
+    .then((response) => {
+      setTitle("");
+      setWeddingDate("");
+      setGuestsNumber(0);
+  
+      // Update venueDetails with new reservation
+      const newReservation = response.data;
+      setVenueDetails((prevVenueDetails) => {
+        // Check if venueDetails is null, return previous state
+        if (!prevVenueDetails) {
+          return prevVenueDetails;
+        }
   
         // Update venueDetails with new reservation
-        const newReservation = response.data;
-        setVenueDetails((prevVenueDetails) => {
-          // Check if venueDetails is null, return previous state
-          if (!prevVenueDetails) {
-            return prevVenueDetails;
-          }
+        const updatedReservations = [newReservation, ...prevVenueDetails.reservations];
+        return { reservations: updatedReservations, ...prevVenueDetails };
+      });
   
-          // Update venueDetails with new reservation
-          const updatedReservations = [newReservation, ...prevVenueDetails.reservations];
-          return { reservations: updatedReservations, ...prevVenueDetails };
-        });
-      })
-      .catch((error) => console.log(error));
+      // Update userDetails with new reservation
+      setUserDetails((prevUserDetails) => {
+        // Check if userDetails is null, return previous state
+        if (!prevUserDetails) {
+          return prevUserDetails;
+        }
+  
+        // Update userDetails with new reservation
+        const updatedReservations = [newReservation, ...prevUserDetails.reservations];
+        return { reservations: updatedReservations, ...prevUserDetails };
+      });
+    })
+    .catch((error) => console.log(error));
   };
 
   return (
