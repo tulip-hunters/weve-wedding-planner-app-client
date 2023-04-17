@@ -72,11 +72,11 @@ function VenueDetailsPage() {
                 {/* <p className="fw-semibold">{venueDetails.likes}</p> */}
 
                 <Link to="/venues">
-                  <button>Back to all venues</button>
+                  <button className="btn btn-primary">Back to all venues</button>
                 </Link>
                 {venueDetails && user && venueDetails.user === user._id ? (
                   <Link to={`/venues/edit/${venueId}`}>
-                    <button>Edit Venue</button>
+                    <button className="btn btn-primary">Edit Venue</button>
                   </Link>
                 ) : (
                   <></>

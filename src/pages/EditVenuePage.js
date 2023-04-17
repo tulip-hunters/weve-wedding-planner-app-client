@@ -107,10 +107,10 @@ const deleteVenue = () => {
           onChange={(e) => setOffers(e.target.value)}
         />
 
-        <button type="submit">Update Venue</button>
+        <button className="btn btn-primary" type="submit">Update Venue</button>
       </form>
 
-      <button onClick={deleteVenue}>Delete Venue</button>
+      <button className="btn btn-primary" onClick={deleteVenue}>Delete Venue</button>
       </div>
 
       
