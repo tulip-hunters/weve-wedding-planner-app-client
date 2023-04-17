@@ -18,12 +18,12 @@ function Navbar() {
         <nav>
       <Link to="/">WeVe</Link>  | {" "}
       <Link to="/venues" element={ <VenuesListPage /> }> All Venues </Link> | {" "}
-      <Link to="/venues/create" element={ <CreateVenuePage /> }>Create a new Venue </Link>  | {" "}
-      <Link to="/profilepage" element={ <ProfilePage />} > Profile Page </Link>  | {" "}
+
       
       {isLoggedIn && (
         <>
-      
+        <Link to="/venues/create" element={ <CreateVenuePage /> }>Create a new Venue </Link>  | {" "}
+      <Link to="/profilepage" element={ <ProfilePage />} > Profile Page </Link>  | {" "}
       <button onClick={logOutUser}>Logout</button>  | {" "}
           <span>{user && user.name}</span>
         </>
