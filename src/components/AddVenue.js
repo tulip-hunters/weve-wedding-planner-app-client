@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 
-function AddVenue() {
-
+function AddVenue(props) {
+  const { isLoggedIn, user } = useContext(AuthContext);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [address, setAddress] = useState("");
@@ -14,7 +15,7 @@ function AddVenue() {
     const [offers, setOffers] = useState([]);
 
 
-    // const navigate =  useNavigate();
+    const navigate =  useNavigate();
 
 const handleSubmit = (event) => {
 
@@ -32,20 +33,23 @@ const handleSubmit = (event) => {
             imageUrl,
             offers
         };
-    
+        const storedToken = localStorage.getItem("authToken");
         
 
-        axios.post(`${process.env.REACT_APP_APIURL}/api/venues`, newVenue)
-        .then(response => {
+        axios.post(`${process.env.REACT_APP_APIURL}/api/venues`, newVenue, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
+
+        .then((response)=> {
             setName("");
             setAddress("");
             setDescription("");
             setPrice("");
             setCapacity("");
-            setOffers([]);
+            setOffers("");
             setImageUrl("");
 
-            // navigate('/venues')
+            navigate('/venues')
         })
         .catch(e => {
             console.log('There was a problem while adding a new venue', e)
@@ -58,8 +62,8 @@ return(
      
   
      <h1>Add your Venue</h1>
-     <form onSubmit={handleSubmit} /> 
-     
+     <form onSubmit={handleSubmit}> 
+     <div>
       <label>
         Name: 
         <input type='text' className="form-to-create" name="name" value={name} onChange={(event) => {setName(event.target.value)}}  /> 
@@ -95,8 +99,9 @@ return(
         <input type='enum' className="form-to-create" name="offers" value={offers} onChange={(event) => {setOffers(event.target.value)}}  /> 
       </label>
 
-    <button type="submit"> SAVE </button>
-
+    <button> SAVE </button>
+    </div>
+</form>
     </>
 
 )
