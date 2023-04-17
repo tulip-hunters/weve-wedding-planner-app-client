@@ -13,15 +13,28 @@ function AddVenue(props) {
     const [capacity, setCapacity] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [offers, setOffers] = useState([]);
-
-
     const navigate =  useNavigate();
+
+ // ******** this method handles the file upload ********
+ const handleFileUpload = (event) => {
+  const uploadData = new FormData();
+
+  // imageUrl => this name has to be the same as in the model since we pass
+  // req.body to .create() method when creating a new movie in '/api/houses' POST route
+  uploadData.append("imageUrl", event.target.files[0]);
+
+  axios
+    .post(`${process.env.REACT_APP_APIURL}/api/upload`, uploadData)
+    .then((response) => {
+      // response carries "fileUrl" which we can use to update the state
+      setImageUrl(response.data.fileUrl);
+    })
+    .catch((err) => console.log("Error while uploading the file: ", err));
+};
 
 const handleSubmit = (event) => {
 
     event.preventDefault();
-
-   
 
         const newVenue = {
 
@@ -91,7 +104,7 @@ return(
 
       <label>
         ImageUrl:
-        <input type='text' className="form-to-create" name="imageUrl" value={imageUrl} onChange={(event) => {setImageUrl(event.target.value)}}  /> 
+        <input type='file' className="form-to-create" name="imageUrl" onChange={(event) => handleFileUpload(event)}  /> 
       </label>
 
       <label>
