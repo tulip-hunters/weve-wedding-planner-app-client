@@ -224,19 +224,6 @@ function AddVenue(props) {
                       Jazz Band
                     </label>
                   </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="offers"
-                      value="folk group"
-                      checked={offers.includes("folk group")}
-                      onChange={(event) => handleOfferChange(event)}
-                    />
-                    <label className="form-check-label text-left">
-                      Folk Group
-                    </label>
-                  </div>
                 </div>
                 <div className="col-2">
                   <div className="form-check">
@@ -317,6 +304,19 @@ function AddVenue(props) {
                     />
                     <label className="form-check-label text-left">
                       Indoor Ceremeony
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      name="offers"
+                      value="other"
+                      checked={offers.includes("other")}
+                      onChange={(event) => handleOfferChange(event)}
+                    />
+                    <label className="form-check-label text-left">
+                      Other /check description/
                     </label>
                   </div>
                 </div>

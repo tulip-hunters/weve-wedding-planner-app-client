@@ -39,13 +39,13 @@ function VenueDetailsPage() {
                 {venueDetails.imageUrl ? (
                   <Image
                     src={venueDetails.imageUrl}
-                    alt={venueDetails.name}
+                    alt="image"
                     style={{ width: "600px", height: "auto" }}
                   />
                 ) : (
                   <Image
                     src={defaultImageUrl}
-                    alt={venueDetails.name}
+                    alt="image"
                     style={{ width: "600px", height: "auto" }}
                   />
                 )}
