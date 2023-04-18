@@ -1,11 +1,9 @@
-// import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import AddReservation from "../components/AddReservation";
 import { AuthContext } from "../context/auth.context";
 import venuesService from "../services/venues.service";
-import axios from "axios";
 
 const defaultImageUrl =
   "https://images.pexels.com/photos/12846017/pexels-photo-12846017.jpeg";
@@ -30,18 +28,6 @@ function VenueDetailsPage() {
     getVenue();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // useEffect(() => {
-  //   // Fetch user details and set it in state
-  //   if (user) {
-  //     axios
-  //       .get(`${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`)
-  //       .then((response) => {
-  //         setUserDetails(response.data);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   }
-  // }, [user]);
 
   return (
     <>
@@ -81,12 +67,10 @@ function VenueDetailsPage() {
                   Additional offer:
                   {venueDetails.offers.join(", ")}
                 </p>
-
-                {/* <p className="fw-semibold">{venueDetails.comments}</p> */}
-                {/* <p className="fw-semibold">{venueDetails.likes}</p> */}
-
                 <Link to="/venues">
-                  <button className="btn btn-primary">Back to all venues</button>
+                  <button className="btn btn-primary">
+                    Back to all venues
+                  </button>
                 </Link>
                 {venueDetails && user && venueDetails.user === user._id ? (
                   <Link to={`/venues/edit/${venueId}`}>
@@ -139,7 +123,7 @@ function VenueDetailsPage() {
           </div>
         </div>
       ) : (
-        "loading...."
+        "Loading...."
       )}
     </>
   );

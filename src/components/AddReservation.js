@@ -10,11 +10,10 @@ function AddReservation(props) {
   const [weddingDate, setWeddingDate] = useState("");
   const [guestsNumber, setGuestsNumber] = useState("");
   const [venueDetails, setVenueDetails] = useState(null);
-//   const [userDetails, setUserDetails] = useState(null)
   const navigate = useNavigate();
 
-// Fetch venueDetails from API or context and set it in state
-useEffect(() => {
+  // Fetch venueDetails from API or context and set it in state
+  useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/api/venues/${props.venueId}`)
       .then((response) => {
@@ -22,22 +21,18 @@ useEffect(() => {
       })
       .catch((error) => console.log(error));
   }, [props.venueId]);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (!venueDetails) {
       // Handle if venueDetails is not available yet
       return;
     }
-    // if (!userDetails) {
-    //     // Handle if venueDetails is not available yet
-    //     return;
-    //   }
-  
+
     // Convert guestsNumber to a number
     const guestsNumberInt = parseInt(guestsNumber, 10);
-  
+
     // Check if guestsNumber is greater than the maximum venue capacity
     if (guestsNumberInt > venueDetails.capacity) {
       alert(
@@ -45,7 +40,7 @@ useEffect(() => {
       );
       return;
     }
-  
+
     const requestBody = {
       title,
       weddingDate,
@@ -54,44 +49,39 @@ useEffect(() => {
       venue: props.venueId,
     };
     const storedToken = localStorage.getItem("authToken");
-  
+
     axios
-    .post(`${process.env.REACT_APP_SERVER_URL}/api/reservations`, requestBody, {
-      headers: { Authorization: `Bearer ${storedToken}` },
-    })
-    .then((response) => {
-      setTitle("");
-      setWeddingDate("");
-      setGuestsNumber(0);
-      setRefresh(!refresh)
-      navigate(`/profilepage`); 
-  
-      // Update venueDetails with new reservation
-      const newReservation = response.data;
-      setVenueDetails((prevVenueDetails) => {
-        // Check if venueDetails is null, return previous state
-        if (!prevVenueDetails) {
-          return prevVenueDetails;
+      .post(
+        `${process.env.REACT_APP_SERVER_URL}/api/reservations`,
+        requestBody,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
         }
-  
+      )
+      .then((response) => {
+        setTitle("");
+        setWeddingDate("");
+        setGuestsNumber(0);
+        setRefresh(!refresh);
+        navigate(`/profilepage`);
+
         // Update venueDetails with new reservation
-        const updatedReservations = [newReservation, ...prevVenueDetails.reservations];
-        return { reservations: updatedReservations, ...prevVenueDetails };
-      });
-  
-    //   // Update userDetails with new reservation
-    //   setUserDetails((prevUserDetails) => {
-    //     // Check if userDetails is null, return previous state
-    //     if (!prevUserDetails) {
-    //       return prevUserDetails;
-    //     }
-  
-    //     // Update userDetails with new reservation
-    //     const updatedReservations = [newReservation, ...prevUserDetails.reservations];
-    //     return { reservations: updatedReservations, ...prevUserDetails };
-    //   });
-    })
-    .catch((error) => console.log(error));
+        const newReservation = response.data;
+        setVenueDetails((prevVenueDetails) => {
+          // Check if venueDetails is null, return previous state
+          if (!prevVenueDetails) {
+            return prevVenueDetails;
+          }
+
+          // Update venueDetails with new reservation
+          const updatedReservations = [
+            newReservation,
+            ...prevVenueDetails.reservations,
+          ];
+          return { reservations: updatedReservations, ...prevVenueDetails };
+        });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

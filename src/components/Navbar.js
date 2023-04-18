@@ -8,37 +8,50 @@ import CreateVenuePage from "../pages/CreateVenuePage";
 import ProfilePage from "../pages/ProfilePage";
 
 function Navbar() {
-   // Subscribe to the AuthContext to gain access to
-   // the values from AuthContext.Provider `value` prop
-    const { isLoggedIn, user, logOutUser } = useContext(AuthContext); 
+  // Subscribe to the AuthContext to gain access to
+  // the values from AuthContext.Provider `value` prop
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
-   //  Rendering logic to display different content 
-   //  depending on whether the user is logged in or not
-    return (
-        <nav>
-      <Link to="/">WeVe</Link>  | {" "}
-      <Link to="/venues" element={ <VenuesListPage /> }> All Venues </Link> | {" "}
-
-      
+  //  Rendering logic to display different content
+  //  depending on whether the user is logged in or not
+  return (
+    <nav>
+      <Link to="/">WeVe</Link> |{" "}
+      <Link to="/venues" element={<VenuesListPage />}>
+        {" "}
+        All Venues{" "}
+      </Link>{" "}
+      |{" "}
       {isLoggedIn && (
         <>
-        <Link to="/venues/create" element={ <CreateVenuePage /> }>Create a new Venue </Link>  | {" "}
-      <Link to="/profilepage" element={ <ProfilePage />} > Profile Page </Link>  | {" "}
-      <button onClick={logOutUser}>Logout</button>  | {" "}
+          <Link to="/venues/create" element={<CreateVenuePage />}>
+            Create a new Venue{" "}
+          </Link>{" "}
+          |{" "}
+          <Link to="/profilepage" element={<ProfilePage />}>
+            {" "}
+            Profile Page{" "}
+          </Link>{" "}
+          | <button onClick={logOutUser}>Logout</button> |{" "}
           <span>{user && user.name}</span>
         </>
       )}
- 
       {!isLoggedIn && (
         <>
-          <Link to="/register" element={ <RegisterPage /> } > Register </Link>  | {" "}
-          <Link to="/login" element={ <LoginPage /> } > Login </Link>  | {" "}
-         
+          <Link to="/register" element={<RegisterPage />}>
+            {" "}
+            Register{" "}
+          </Link>{" "}
+          |{" "}
+          <Link to="/login" element={<LoginPage />}>
+            {" "}
+            Login{" "}
+          </Link>{" "}
+          |{" "}
         </>
-      )}      
- 
+      )}
     </nav>
-    )
+  );
 }
 
 export default Navbar;

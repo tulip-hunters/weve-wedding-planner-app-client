@@ -3,7 +3,7 @@ import AddVenue from "../components/AddVenue";
 function CreateVenuePage() {
   return (
     <div>
-     <AddVenue />
+      <AddVenue />
     </div>
   );
 }
