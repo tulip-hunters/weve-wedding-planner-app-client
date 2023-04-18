@@ -19,11 +19,11 @@ function AddVenue(props) {
     const uploadData = new FormData();
 
     // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/houses' POST route
+    // req.body to .create() method when creating a new movie in '/api/venues' POST route
     uploadData.append("imageUrl", event.target.files[0]);
 
     axios
-      .post(`${process.env.REACT_APP_APIURL}/api/upload`, uploadData)
+      .post(`${process.env.REACT_APP_SERVER_URL}/api/upload`, uploadData)
       .then((response) => {
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.data.fileUrl);
@@ -46,7 +46,7 @@ function AddVenue(props) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${process.env.REACT_APP_APIURL}/api/venues`, newVenue, {
+      .post(`${process.env.REACT_APP_SERVER_URL}/api/venues`, newVenue, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
 

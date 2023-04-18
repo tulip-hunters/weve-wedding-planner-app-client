@@ -35,7 +35,7 @@ function VenueDetailsPage() {
     // Fetch user details and set it in state
     if (user) {
       axios
-        .get(`${process.env.REACT_APP_APIURL}/api/users/${user._id}`)
+        .get(`${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`)
         .then((response) => {
           setUserDetails(response.data);
         })

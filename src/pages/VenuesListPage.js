@@ -13,7 +13,7 @@ function VenuesListPage() {
   //Get all Venues
   const getAllVenues = () => {
     axios
-      .get(`${process.env.REACT_APP_APIURL}/api/venues`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/venues`)
       .then((response) => {
         //console.log(response.data);
         setVenues(response.data);

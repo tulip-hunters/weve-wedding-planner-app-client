@@ -16,7 +16,7 @@ function AddReservation(props) {
 // Fetch venueDetails from API or context and set it in state
 useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_APIURL}/api/venues/${props.venueId}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/venues/${props.venueId}`)
       .then((response) => {
         setVenueDetails(response.data);
       })
@@ -56,7 +56,7 @@ useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
   
     axios
-    .post(`${process.env.REACT_APP_APIURL}/api/reservations`, requestBody, {
+    .post(`${process.env.REACT_APP_SERVER_URL}/api/reservations`, requestBody, {
       headers: { Authorization: `Bearer ${storedToken}` },
     })
     .then((response) => {
