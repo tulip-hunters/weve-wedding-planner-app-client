@@ -31,17 +31,17 @@ function VenueDetailsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    // Fetch user details and set it in state
-    if (user) {
-      axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`)
-        .then((response) => {
-          setUserDetails(response.data);
-        })
-        .catch((error) => console.log(error));
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   // Fetch user details and set it in state
+  //   if (user) {
+  //     axios
+  //       .get(`${process.env.REACT_APP_SERVER_URL}/api/users/${user._id}`)
+  //       .then((response) => {
+  //         setUserDetails(response.data);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }
+  // }, [user]);
 
   return (
     <>
