@@ -79,13 +79,13 @@ function AddVenue(props) {
   };
 
   return (
-    <div className="container">
+    <div className="container d-flex justify-content-center">
       <div>
-        <div className="col-12 mx-auto">
-          <h1 className="text-center">Add your Venue</h1>
-          <form onSubmit={handleSubmit} className="col">
-            <div className="col-md-4  was-validated ">
-              <span htmlFor="validationTextarea" className="form-label">
+        <div className="mb-3">
+          <h1 className="text-center">Add Your Venue</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="form-outline mb-4  was-validated ">
+              <span htmlFor="validationTextarea" className="form-label fw-bold">
                 NAME
               </span>
               <input
@@ -104,8 +104,8 @@ function AddVenue(props) {
               </div>
             </div>
 
-            <div className="col-md-4  was-validated ">
-              <span htmlFor="validationTextarea" className="form-label">
+            <div className="form-outline mb-4  was-validated">
+              <span htmlFor="validationTextarea" className="form-label fw-bold">
                 ADDRESS
               </span>
               <input
@@ -124,8 +124,8 @@ function AddVenue(props) {
               </div>
             </div>
 
-            <div className="col-md-4  was-validated ">
-              <span htmlFor="validationTextarea" className="form-label">
+            <div className="form-outline mb-4  was-validated ">
+              <span htmlFor="validationTextarea" className="form-label fw-bold">
                 DESCRIPTION
               </span>
               <textarea
@@ -144,9 +144,9 @@ function AddVenue(props) {
                 Please enter venue description. This field is required.
               </div>
             </div>
-            <div className="row g-2">
-              <div className="col-2  was-validated ">
-                <span htmlFor="validationTextarea" className="form-label">
+            <div className="row">
+              <div className="form-outline col-6  was-validated ">
+                <span htmlFor="validationTextarea" className="form-label fw-bold">
                   PRICE
                 </span>
 
@@ -164,8 +164,8 @@ function AddVenue(props) {
                   Please enter venue price. This field is required.
                 </div>
               </div>{" "}
-              <div className="col-2  was-validated ">
-                <span htmlFor="validationTextarea" className="form-label">
+              <div className="form-outline col-6  was-validated ">
+                <span htmlFor="validationTextarea" className="form-labe fw-bold">
                   CAPACITY
                 </span>
 
@@ -185,8 +185,8 @@ function AddVenue(props) {
               </div>
             </div>
             <div class="mb-3">
-              <label className="form-label">
-                ImageUrl:
+              <label className="form-outline col-12 fw-bold">
+                IMAGE
                 <input
                   type="file"
                   className="form-control"
@@ -196,10 +196,11 @@ function AddVenue(props) {
               </label>
             </div>
 
-            <label className="container">
-              Offers:
+            <label className="container  ">
+              <p className="fw-bold">VENUE EXTRA OFFERS</p>
+              <div className="">
               <div className="row">
-                <div className="col-2">
+                <div className="col-4">
                   <div className="form-check">
                     <input
                       className="form-check-input"
@@ -224,8 +225,21 @@ function AddVenue(props) {
                       Jazz Band
                     </label>
                   </div>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      name="offers"
+                      value="guestrooms"
+                      checked={offers.includes("guestrooms")}
+                      onChange={(event) => handleOfferChange(event)}
+                    />
+                    <label className="form-check-label text-left">
+                      Guestrooms
+                    </label>
+                  </div>
                 </div>
-                <div className="col-2">
+                <div className="col-4">
                   <div className="form-check">
                     <input
                       className="form-check-input"
@@ -266,20 +280,8 @@ function AddVenue(props) {
                     </label>
                   </div>
                 </div>
-                <div className="col-2">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="offers"
-                      value="guestrooms"
-                      checked={offers.includes("guestrooms")}
-                      onChange={(event) => handleOfferChange(event)}
-                    />
-                    <label className="form-check-label text-left">
-                      Guestrooms
-                    </label>
-                  </div>
+                <div className="col-4">
+
                   <div className="form-check">
                     <input
                       className="form-check-input"
@@ -321,9 +323,10 @@ function AddVenue(props) {
                   </div>
                 </div>
               </div>
+              </div>
             </label>
             <div>
-              <button className="btn btn-primary"> SAVE </button>
+              <button className="btn btn-primary col-12 px-3 py-2 mt-4"> SAVE </button>
             </div>
           </form>
         </div>
