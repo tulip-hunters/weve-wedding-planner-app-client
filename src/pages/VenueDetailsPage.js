@@ -12,8 +12,8 @@ const defaultImageUrl =
 function VenueDetailsPage() {
   const { venueId } = useParams();
   const [venueDetails, setVenueDetails] = useState(null);
-  const { user, isLoggedIn } = useContext(AuthContext);
-  const [userDetails, setUserDetails] = useState(null);
+  const { user } = useContext(AuthContext);
+  // const [userDetails, setUserDetails] = useState(null);
 
   const getVenue = () => {
     venuesService
@@ -75,7 +75,7 @@ function VenueDetailsPage() {
                 </Link>
                 {venueDetails && user && venueDetails.user === user._id ? (
                   <Link to={`/venues/edit/${venueId}`}>
-                    <button className="btn btn-outline-primary">Edit Venue</button>
+                    <button className="btn btn-outline-dark">Edit Venue</button>
                   </Link>
                 ) : (
                   <></>
@@ -83,7 +83,7 @@ function VenueDetailsPage() {
               </div>
             </div>
             <section>
-              <AddReservation refreshVenue={getVenue} venueId={venueId} />
+            <AddReservation refreshVenue={getVenue} venueId={venueId} />
             </section>
             <section>
               {venueDetails && venueDetails.reservations.length >= 1 && (
