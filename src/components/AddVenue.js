@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import Footer from "./Footer";
 
 function AddVenue(props) {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -79,6 +80,7 @@ function AddVenue(props) {
   };
 
   return (
+    <>
     <div className="container d-flex justify-content-center">
       <div>
         <div className="mb-3">
@@ -184,7 +186,7 @@ function AddVenue(props) {
                 </div>
               </div>
             </div>
-            <div class="mb-3">
+            <div className="mb-3">
               <label className="form-outline col-12 fw-bold">
                 IMAGE
                 <input
@@ -326,12 +328,15 @@ function AddVenue(props) {
               </div>
             </label>
             <div>
-              <button className="btn btn-primary col-12 px-3 py-2 mt-4"> SAVE </button>
+              <button className="btn btn-purple col-12 px-3 py-2 mt-4 text-white"> SAVE </button>
             </div>
           </form>
         </div>
       </div>
+      
     </div>
+    <Footer />
+    </>
   );
 }
 

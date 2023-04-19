@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
+import Footer from "../components/Footer";
 
 // const API_URL = "http://localhost:5005";
 
@@ -39,6 +40,7 @@ function RegisterPage(props) {
   };
 
   return (
+    <>
     <div>
       <h1>Sign Up</h1>
 
@@ -57,7 +59,7 @@ function RegisterPage(props) {
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
-        <button type="submit">Register</button>
+        <button className="btn btn-purple text-white" type="submit">Register</button>
       </form>
 
       {errorMessage && <p>{errorMessage}</p>}
@@ -65,6 +67,8 @@ function RegisterPage(props) {
       <p>Already have account?</p>
       <Link to={"/login"}>Login</Link>
     </div>
+    <Footer />
+    </>
   );
 }
 

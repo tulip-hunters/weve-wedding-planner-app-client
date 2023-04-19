@@ -11,3 +11,15 @@
   font-weight: bolder;
   font-size: large;
 }
+
+.carousel-caption {
+  background-color: rgba(18, 16, 16, 0.3);
+}
+
+.btn-purple {
+  background-image: linear-gradient(to right,   rgb(183, 25, 170), rgb(49, 6, 11), rgb(183, 25, 170));
+}
+.btn-purple:hover {
+  font-weight: bolder;
+  background-image: linear-gradient(to right, rgb(49, 6, 11),  rgb(183, 25, 170), rgb(49, 6, 11));
+}

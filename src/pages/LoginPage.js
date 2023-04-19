@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
 import authService from "./../services/auth.service";
+import Footer from "../components/Footer";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
@@ -37,6 +38,7 @@ function LoginPage(props) {
   };
 
   return (
+    <>
     <div className="LoginPage">
       <h1>Login</h1>
 
@@ -52,13 +54,15 @@ function LoginPage(props) {
           onChange={handlePassword}
         />
 
-        <button type="submit">Login</button>
+        <button className="btn btn-purple text-white" type="submit">Login</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
       <Link to={"/register"}>Register</Link>
     </div>
+    <Footer />
+    </>
   );
 }
 

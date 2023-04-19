@@ -4,6 +4,7 @@ import Image from "react-bootstrap/Image";
 import AddReservation from "../components/AddReservation";
 import { AuthContext } from "../context/auth.context";
 import venuesService from "../services/venues.service";
+import Footer from "../components/Footer";
 
 const defaultImageUrl =
   "https://images.pexels.com/photos/12846017/pexels-photo-12846017.jpeg";
@@ -68,13 +69,13 @@ function VenueDetailsPage() {
                   {venueDetails.offers.join(", ")}
                 </p>
                 <Link to="/venues">
-                  <button className="btn btn-primary">
+                  <button className="btn btn-purple text-white">
                     Back to all venues
                   </button>
                 </Link>
                 {venueDetails && user && venueDetails.user === user._id ? (
                   <Link to={`/venues/edit/${venueId}`}>
-                    <button className="btn btn-primary">Edit Venue</button>
+                    <button className="btn btn-outline-primary">Edit Venue</button>
                   </Link>
                 ) : (
                   <></>
@@ -125,6 +126,7 @@ function VenueDetailsPage() {
       ) : (
         "Loading...."
       )}
+      <Footer />
     </>
   );
 }

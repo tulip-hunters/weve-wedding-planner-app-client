@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 function AddReservation(props) {
   const { isLoggedIn, user, setRefresh, refresh } = useContext(AuthContext);
@@ -85,6 +86,7 @@ function AddReservation(props) {
   };
 
   return (
+    <>
     <div className="card pt-4 d-flex justify-content-center">
       {isLoggedIn ? (
         <>
@@ -127,7 +129,7 @@ function AddReservation(props) {
               </div>
               <div className="col-3 mx-auto">
                 {user !== user._id ? (
-                  <button className="btn btn-primary w-100" type="submit">
+                  <button className="btn btn-purple w-100 text-white" type="submit">
                     Add Reservation
                   </button>
                 ) : (
@@ -141,6 +143,7 @@ function AddReservation(props) {
         <h3>Please login to add a reservation</h3>
       )}
     </div>
+    </>
   );
 }
 
