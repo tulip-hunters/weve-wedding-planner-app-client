@@ -6,6 +6,7 @@ import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import CreateVenuePage from "../pages/CreateVenuePage";
 import ProfilePage from "../pages/ProfilePage";
+import logo from "../images/weve-logo-white.png"
 
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
@@ -15,42 +16,90 @@ function Navbar() {
   //  Rendering logic to display different content
   //  depending on whether the user is logged in or not
   return (
-    <nav>
-      <Link to="/">WeVe</Link> |{" "}
-      <Link to="/venues" element={<VenuesListPage />}>
-        {" "}
-        All Venues{" "}
-      </Link>{" "}
-      |{" "}
-      {isLoggedIn && (
-        <>
-          <Link to="/venues/create" element={<CreateVenuePage />}>
-            Create a new Venue{" "}
-          </Link>{" "}
-          |{" "}
-          <Link to="/profilepage" element={<ProfilePage />}>
-            {" "}
-            Profile Page{" "}
-          </Link>{" "}
-          | <button onClick={logOutUser}>Logout</button> |{" "}
-          <span>{user && user.name}</span>
-        </>
-      )}
-      {!isLoggedIn && (
-        <>
-          <Link to="/register" element={<RegisterPage />}>
-            {" "}
-            Register{" "}
-          </Link>{" "}
-          |{" "}
-          <Link to="/login" element={<LoginPage />}>
-            {" "}
-            Login{" "}
-          </Link>{" "}
-          |{" "}
-        </>
-      )}
-    </nav>
+    <>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid nav-backgr">
+          <div className="navbar-collapse justify-content-center">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link
+                  to="/venues"
+                  element={<VenuesListPage />}
+                  className="nav-link text-white"
+                >
+                  ALL VENUES
+                </Link>
+              </li>
+              {isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    to="/venues/create"
+                    element={<CreateVenuePage />}
+                    className="nav-link text-white"
+                  >
+                    ADD NEW VENUE
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </div>
+          <div className="navbar-brand mx-auto">
+          <Link to="/" className="navbar-brand">
+            <img src={logo} alt="WeVe logo" height="100" /></Link>
+          </div>
+          <div className="navbar-collapse justify-content-end">
+            <ul className="navbar-nav">
+              {isLoggedIn && (
+                <>
+                <li className="nav-item">
+                    <span className="nav-link text-white">{`HELLO, ${
+                      user && user.name
+                    }`}</span>
+                  </li>
+                  <li className="nav-item ">
+                    <Link
+                      to="/profilepage"
+                      element={<ProfilePage />}
+                      className="nav-link text-white"
+                    >
+                      PROFILE PAGE
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <button onClick={logOutUser} className="nav-link btn text-white">
+                      LOGOUT
+                    </button>
+                  </li>
+
+                </>
+              )}
+              {!isLoggedIn && (
+                <>
+                  <li className="nav-item">
+                    <Link
+                      to="/register"
+                      element={<RegisterPage />}
+                      className="nav-link text-white"
+                    >
+                      REGISTER
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      to="/login"
+                      element={<LoginPage />}
+                      className="nav-link text-white"
+                    >
+                      LOGIN
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
 
