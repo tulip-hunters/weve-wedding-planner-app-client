@@ -35,7 +35,8 @@ const ProfilePage = () => {
           </p>{" "}
           <br />
           <br />
-          <p className="reservation-title" style={{background:"purple", color:"white"}}>CURRENTLY YOU HAVE THE FOLLOWING RESERVATIONS:</p>
+          <p className="reservation-title" style={{background:"purple", color:"white"}}>YOUR RESERVATIONS:</p>
+
           {user.reservations ? (
             user.reservations.map((reservation) => {
               const venueName = venues[reservation.venue];
@@ -59,7 +60,7 @@ const ProfilePage = () => {
           )}
         </>
       ) : (
-        <p>Please sign in</p>
+        <p className="reservation-title" style={{background:"purple", color:"white"}}> You are currently Loged out. Please Login.</p>
       )}
       <Link to="/venues">
         <button className="btn btn-purple text-white" >Check other options</button>
