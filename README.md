@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+### Project 3: MERN Web Application - WeVe Wedding Venues
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MERN Web Application created by [Senem N. Osmanova](https://github.com/SenemDEV) and [Bartosz Dubinski](https://github.com/bartoszde) as a part of Full-stack Web Developer Bootcamp in Ironhack
 
-## Available Scripts
+## About this project
+WeVe is a MERN web application wich allows users to rent own place to organize wedding or reserve a place.
+![homepage](./src/images/homepage.png)
 
-In the project directory, you can run:
+### Technical Requirements
+Your full-stack application must meet the following technical requirements:
 
-### `npm start`
+1. Have a SPA frontend, built with React, consisting of multiple views and implementing all CRUD actions.
+2. Have a REST API backend built with ExpressJS, MongoDB and Mongoose, that your React app will communicate with.
+3. Have a REST API backend with routes that perform all CRUD actions for at least one model (excluding the user model).
+4. Have 3 database models or more. Having one model for users is the first step. The other two (or more) models should represent the main functionality of your app.
+5. Include sign-up, log-in and log-out functionality with encrypted passwords (or social login) and authorization (logged-in users can do additional things).
+6. Have two separate repos on GitHub. One repo is for your frontend React application and the other is for your backend REST API.
+7. Have at least 2 commits per day that you worked on.
+8. Have a backend validation and centralized error handling in your REST API.
+9. Be deployed online, allowing anyone to access and use your app.
+10. As a final step, check all the features outlined in points 1 - 5 and ensure they are implemented and working ahead of delivery.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Deliverables
+Students must submit the following deliverables in order for the project to be deemed complete:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- A working app that meets all technical requirements, built by you.
+- A working app deployed on Fly.io/Netlify.
+- The two URLs of your GitHub repositories (frontend and backend).
+- The URL to the deployed React app.
+- The URL of the slides for your project presentation.
+- Your GitHub repos must have a README with the completed project documentation.
+- Present and demo your app during the Final Project presentations.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
