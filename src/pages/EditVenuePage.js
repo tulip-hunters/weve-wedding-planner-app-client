@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import venuesService from "../services/venues.service";
 import Footer from "../components/Footer";
-import axios from "axios";
+
 
 function EditVenuePage() {
   const [name, setName] = useState("");
@@ -72,7 +72,7 @@ function EditVenuePage() {
     <div className="container d-flex justify-content-center">
       <div>
         <div className="mb-3">
-          <h1 className="text-center">Add Your Venue</h1>
+          <h1 className="text-center title">Add Your Venue</h1>
           <form onSubmit={handleFormSubmit}>
             <div className="form-outline mb-4  was-validated ">
               <span htmlFor="validationTextarea" className="form-label fw-bold">
@@ -308,7 +308,7 @@ function EditVenuePage() {
               <button className="btn btn-purple col-12 px-3 py-2 mt-4 text-white"> UPDATE VENUE </button>
             </div>
             <div>
-              <button className="btn btn-outline-primary col-12 px-3 py-2 mt-4 " onClick={deleteVenue}>       DELETE VENUE
+              <button className="btn btn-outline-dark col-12 px-3 py-2 mt-4 " onClick={deleteVenue}>       DELETE VENUE
     </button>
             </div>
           </form>
@@ -320,76 +320,5 @@ function EditVenuePage() {
     </>
   );
 }
-//   return (
-//     <>
-//     <div>
-//       <h1>Edit Venue Page</h1>
-
-//       <form onSubmit={handleFormSubmit}>
-//         <label>Name:</label>
-//         <input
-//           type="text"
-//           name="name"
-//           value={name}
-//           onChange={(e) => setName(e.target.value)}
-//         />
-
-//         <label>Description:</label>
-//         <textarea
-//           name="description"
-//           value={description}
-//           onChange={(e) => setDescription(e.target.value)}
-//         />
-
-//         <label>Address:</label>
-//         <textarea
-//           name="address"
-//           value={address}
-//           onChange={(e) => setAddress(e.target.value)}
-//         />
-
-//         <label>Price:</label>
-//         <textarea
-//           name="price"
-//           value={price}
-//           onChange={(e) => setPrice(e.target.value)}
-//         />
-
-//         <label>Capacity:</label>
-//         <textarea
-//           name="capacity"
-//           value={capacity}
-//           onChange={(e) => setCapacity(e.target.value)}
-//         />
-
-//         <label>Image url address:</label>
-//         <textarea
-//           name="imageUrl"
-//           value={imageUrl}
-//           onChange={(e) => setImageUrl(e.target.value)}
-//         />
-
-//         <label>Offers:</label>
-//         <textarea
-//           name="offers"
-//           value={offers}
-//           onChange={(e) => setOffers(e.target.value)}
-//         />
-
-//         <button className="btn btn-outline-primary" type="submit">
-//           Update Venue
-//         </button>
-//       </form>
-
-//       <button className="btn btn-outline-primary" onClick={deleteVenue}>
-//         Delete Venue
-//       </button>
-//     </div>
-//     <Footer />
-//     </>
-//   );
-// }
-
-
 
 export default EditVenuePage;

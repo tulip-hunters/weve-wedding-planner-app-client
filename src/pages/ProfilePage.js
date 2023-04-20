@@ -1,4 +1,4 @@
-import Image from "react-bootstrap/Image";
+// import Image from "react-bootstrap/Image";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";

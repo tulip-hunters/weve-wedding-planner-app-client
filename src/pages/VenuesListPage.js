@@ -47,8 +47,11 @@ function VenuesListPage() {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
               {venues.map((venueDetails) => {
                 return (
-                  <div className="col d-flex align-items-stretch" key={venueDetails._id}>
-                    <div className="card  shadow-sm">
+                  <div
+                    className="col d-flex align-items-stretch"
+                    key={venueDetails._id}
+                  >
+                    <div className="card shadow-sm">
                       {venueDetails.imageUrl ? (
                         <div className="bd-placeholder-img card-img-top">
                           <Image
@@ -69,15 +72,18 @@ function VenuesListPage() {
 
                       <div className="card-body">
                         <h2 className="fw-bold">{venueDetails.name}</h2>
-                        <h4>
+                        <p className="fs-5">
                           {" "}
                           <img src={pin} alt="github" height="30" />{" "}
                           {venueDetails.address}
-                        </h4>
-                        <h5 className="fst-italic"> € {venueDetails.price}</h5>
+                        </p>
+                        <p className="fst-italic fw-normal">
+                          {" "}
+                          € {venueDetails.price}
+                        </p>
 
                         <Link to={`/venues/${venueDetails._id}`}>
-                          <button className="btn btn-purple text-white align-self-end">
+                          <button className="btn btn-purple text-white btn-sm align-self-end">
                             MORE DETAILS
                           </button>
                         </Link>

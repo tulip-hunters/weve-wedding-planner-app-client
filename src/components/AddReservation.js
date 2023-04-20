@@ -3,7 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
+
 
 function AddReservation(props) {
   const { isLoggedIn, user, setRefresh, refresh } = useContext(AuthContext);
@@ -50,7 +50,7 @@ function AddReservation(props) {
       venue: props.venueId,
     };
     const storedToken = localStorage.getItem("authToken");
-
+    
     axios
       .post(
         `${process.env.REACT_APP_SERVER_URL}/api/reservations`,
@@ -87,7 +87,7 @@ function AddReservation(props) {
 
   return (
     <>
-    <div className="card pt-4 d-flex justify-content-center">
+    <div className="card pt-4 d-flex justify-content-center m-5">
       {isLoggedIn ? (
         <>
           <h3>Add New Wedding Reservation</h3>
@@ -140,7 +140,7 @@ function AddReservation(props) {
           </form>
         </>
       ) : (
-        <h3>Please login to add a reservation</h3>
+        <h3>To add new reservation please  --register-- or --login--</h3>
       )}
     </div>
     </>
