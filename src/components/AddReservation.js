@@ -147,7 +147,7 @@ function AddReservation(props) {
             <Link to={`/register`}>
               <button className="btn btn-purple btn-sm text-white">
                 REGISTER
-              </button>purple
+              </button>
             </Link>{" "}
             or{" "}
             <Link to={`/login`}>
