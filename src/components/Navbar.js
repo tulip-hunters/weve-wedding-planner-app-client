@@ -12,6 +12,9 @@ function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOutUser();
+  };
 
   //  Rendering logic to display different content
   //  depending on whether the user is logged in or not
@@ -66,10 +69,10 @@ function Navbar() {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <button onClick={logOutUser} className="nav-link btn text-white">
-                      LOGOUT
-                    </button>
-                  </li>
+                  <Link to="/" className="nav-link btn text-white" onClick={handleLogout}>
+                    LOGOUT
+                  </Link>
+                </li>
 
                 </>
               )}
