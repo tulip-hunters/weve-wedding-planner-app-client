@@ -93,13 +93,7 @@ function VenueDetailsPage() {
                   <div className="card align-items-center bg-light ">
                     <br />
                     <br />
-
-                    <section className="map">
-                      <StartMap />
-                    </section>
-
-                
-                  
+                                      
                     <h4 className="align-items-center text-black">
                       Reservations
                     </h4>
