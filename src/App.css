@@ -17,15 +17,15 @@
 }
 
 .btn-purple {
-  background-image: linear-gradient(to right, rgb(49, 6, 11), rgb(183, 25, 170), rgb(49, 6, 11));
+  background-image: linear-gradient( rgb(13, 6, 49), rgb(183, 25, 170), rgb(49, 6, 11));
 }
 
 .btn-purple:hover {
   font-weight: bolder;
-  background-image: linear-gradient(to right, rgb(183, 25, 170), rgb(49, 6, 11), rgb(49, 6, 11));
+  background-image: linear-gradient( rgb(183, 25, 170), rgb(49, 6, 11), rgb(183, 25, 170));
 }
 
 .title {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: rgb(49, 6, 11);
+  color: rgb(54, 10, 45);
 }

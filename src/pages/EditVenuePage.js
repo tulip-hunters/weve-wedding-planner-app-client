@@ -305,11 +305,10 @@ function EditVenuePage() {
               </div>
             </label>
             <div>
-              <button className="btn btn-purple col-12 px-3 py-2 mt-4 text-white"> UPDATE VENUE </button>
+              <button className="btn btn-purple col-12 px-3 py-2 mt-4 text-white">UPDATE VENUE</button>
             </div>
             <div>
-              <button className="btn btn-outline-dark col-12 px-3 py-2 mt-4 " onClick={deleteVenue}>       DELETE VENUE
-    </button>
+              <button className="btn btn-outline-dark col-12 px-3 py-2 mt-4 " onClick={deleteVenue}>DELETE VENUE</button>
             </div>
           </form>
         </div>

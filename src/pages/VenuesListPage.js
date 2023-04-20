@@ -32,7 +32,7 @@ function VenuesListPage() {
         <section className="py-1 text-center container">
           <div className="row py-lg-3">
             <div className="col-lg-10 col-md-10 mx-auto">
-              <h1 className="fw-light">Browse Amazing Venues</h1>
+              <h1 className="fw-light title">Browse Amazing Venues</h1>
               <p className="lead text-muted">
                 Discover a vast selection of amazing venues located in
                 breathtaking destinations all over the world, and take the first
