@@ -1,21 +1,15 @@
-import { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
-import Image from "react-bootstrap/Image";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import AddReservation from "../components/AddReservation";
-import { AuthContext } from "../context/auth.context";
 import venuesService from "../services/venues.service";
 import Footer from "../components/Footer";
 import StartMap from "../components/StartMap";
-import Spinner from 'react-bootstrap/Spinner';
-
-const defaultImageUrl =
-  "https://images.pexels.com/photos/12846017/pexels-photo-12846017.jpeg";
+import VenueDetails from "../components/VenueDetails";
+import VenueReservations from "../components/VenueReservations";
 
 function VenueDetailsPage() {
   const { venueId } = useParams();
   const [venueDetails, setVenueDetails] = useState(null);
-  const { user } = useContext(AuthContext);
-  // const [userDetails, setUserDetails] = useState(null);
 
   const getVenue = () => {
     venuesService
@@ -34,106 +28,10 @@ function VenueDetailsPage() {
 
   return (
     <>
-      {venueDetails ? (
-        <div className="col-12">
-          <div className="row">
-            <div className="col-md-6">
-              <div>
-                {venueDetails.imageUrl ? (
-                  <Image
-                    src={venueDetails.imageUrl}
-                    alt="image"
-                    style={{ width: "600px", height: "auto" }}
-                  />
-                ) : (
-                  <Image
-                    src={defaultImageUrl}
-                    alt="image"
-                    style={{ width: "600px", height: "auto" }}
-                  />
-                )}
-              </div>
-            </div>
-            <div className="col-md-5">
-              <div className="card-body card-details">
-                <h3 className="font-weight-bold text-left">
-                  {venueDetails.name}
-                </h3>
-                <p className="fw-lighter"> {venueDetails.description} </p>
-                <p className="card-text">📍 {venueDetails.address}</p>
-                <p className="fw-semibold">Price: € {venueDetails.price}</p>
-                <p className="fw-semibold">
-                  Max guests capacity: {venueDetails.capacity}
-                </p>
-
-                <p className="fw-semibold">
-                  Additional offer:
-                  {venueDetails.offers.join(", ")}
-                </p>
-                <Link to="/venues">
-                  <button className="btn btn-purple text-white">
-                    Back to all venues
-                  </button>
-                </Link>
-                {venueDetails && user && venueDetails.user === user._id ? (
-                  <Link to={`/venues/edit/${venueId}`}>
-                    <button className="btn btn-outline-dark">Edit Venue</button>
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </div>
-            </div>
-            <section>
-              <AddReservation refreshVenue={getVenue} venueId={venueId} />
-            </section>
-            <section>  <StartMap /></section>
-            <section>
-              {venueDetails && venueDetails.reservations.length >= 1 && (
-                <div className="row mb-12 ">
-                  <div className="card align-items-center bg-light ">
-                    <br />
-                    <br />
-                                      
-                    <h4 className="align-items-center text-black">
-                      Reservations
-                    </h4>
-
-                    {venueDetails &&
-                      venueDetails.reservations.map((reservation) => (
-                        <div
-                          className="card mb-8 col-6 text-black"
-                          key={reservation._id}
-                        >
-                          <div className="row d-flex justify-content-between">
-                            <div className="col-6">
-                              <p>Reserved for: {reservation.title}</p>
-                            </div>
-                            <div className="col-6">
-                              <p>
-                                {new Date(
-                                  reservation.weddingDate
-                                ).toLocaleString("en-uk", {
-                                  weekday: "long",
-                                  day: "numeric",
-                                  month: "long",
-                                  year: "numeric",
-                                })}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
-            </section>
-          </div>
-        </div>
-      ) : <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
-      }
+      <VenueDetails />
+      <AddReservation refreshVenue={getVenue} venueId={venueId} />
+      <StartMap />
+      <VenueReservations />
       <Footer />
     </>
   );

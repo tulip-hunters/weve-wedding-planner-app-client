@@ -6,8 +6,8 @@ import { GoogleMap, useLoadScript, DirectionsService, DirectionsRenderer } from 
 
 const libraries = ["places", "directions", "places"];
 const mapContainerStyle = {
-  width: '90vw',
-  height: '70vh'
+  width: '95vw',
+  height: '40vh'
 };
 const center = {
   lat: 0,
@@ -60,15 +60,15 @@ function StartMap() {
   if (!isLoaded) return "Loading Maps";
 
   return (
-    <div>
-      <div>
+    <div className='card d-flex justify-content-center pt-4 m-4 bg-light'>
+    <h4 className='google-color'>To estimate duration driving time enter venue address</h4>
+      <div className='p-4'>
         <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} />
         <button onClick={handleSearch}>Search</button>
       </div>
       {duration && distance && (
         <div>
-          <p>Driving Time: {duration}</p>
-          <p>Distance: {distance}</p>
+          <p className='fw-bold'>Driving Time: {duration} {" "} | {" "}Distance: {distance}</p>
         </div>
       )}
       <GoogleMap

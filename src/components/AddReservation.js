@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 function AddReservation(props) {
   const { isLoggedIn, user, setRefresh, refresh } = useContext(AuthContext);
@@ -50,7 +49,7 @@ function AddReservation(props) {
       venue: props.venueId,
     };
     const storedToken = localStorage.getItem("authToken");
-    
+
     axios
       .post(
         `${process.env.REACT_APP_SERVER_URL}/api/reservations`,
@@ -87,62 +86,78 @@ function AddReservation(props) {
 
   return (
     <>
-    <div className="card pt-4 d-flex justify-content-center m-5">
-      {isLoggedIn ? (
-        <>
-          <h3>Add New Wedding Reservation</h3>
-          <form className="container" onSubmit={handleSubmit}>
-            <div className="row g-3">
-              <div className="col-3">
-                <input
-                  type="text"
-                  name="title"
-                  value={title}
-                  className="form-control"
-                  placeholder="Your names"
-                  aria-label="title"
-                  onChange={(e) => setTitle(e.target.value)}
-                />
+      <div className="card pt-4 d-flex justify-content-center m-4 bg-light">
+        {isLoggedIn ? (
+          <>
+            <h3>Add New Wedding Reservation</h3>
+            <form className="container" onSubmit={handleSubmit}>
+              <div className="row g-3">
+                <div className="col-3">
+                  <input
+                    type="text"
+                    name="title"
+                    value={title}
+                    className="form-control"
+                    placeholder="Your names"
+                    aria-label="title"
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </div>
+                <div className="col-3">
+                  <input
+                    type="date"
+                    name="weddingDate"
+                    value={weddingDate}
+                    className="form-control"
+                    placeholder="Wedding Date"
+                    aria-label="weddingDate"
+                    onChange={(e) => setWeddingDate(e.target.value)}
+                  />
+                </div>
+                <div className="col-3">
+                  <input
+                    type="number"
+                    name="guestsNumber"
+                    className="form-control"
+                    value={guestsNumber}
+                    min="1"
+                    placeholder="Number of guests"
+                    aria-label="guestsNumber"
+                    onChange={(e) => setGuestsNumber(e.target.value)}
+                  />
+                </div>
+                <div className="col-3 mx-auto mb-2">
+                  {user !== user._id ? (
+                    <button
+                      className="btn btn-purple w-100 text-white"
+                      type="submit"
+                    >
+                      Add Reservation
+                    </button>
+                  ) : (
+                    <p className="mt-4">You are the owner of this venue</p>
+                  )}
+                </div>
               </div>
-              <div className="col-3">
-                <input
-                  type="date"
-                  name="weddingDate"
-                  value={weddingDate}
-                  className="form-control"
-                  placeholder="Wedding Date"
-                  aria-label="weddingDate"
-                  onChange={(e) => setWeddingDate(e.target.value)}
-                />
-              </div>
-              <div className="col-3">
-                <input
-                  type="number"
-                  name="guestsNumber"
-                  className="form-control"
-                  value={guestsNumber}
-                  min="1"
-                  placeholder="Number of guests"
-                  aria-label="guestsNumber"
-                  onChange={(e) => setGuestsNumber(e.target.value)}
-                />
-              </div>
-              <div className="col-3 mx-auto">
-                {user !== user._id ? (
-                  <button className="btn btn-purple w-100 text-white" type="submit">
-                    Add Reservation
-                  </button>
-                ) : (
-                  <p className="mt-4">You are the owner of this venue</p>
-                )}
-              </div>
-            </div>
-          </form>
-        </>
-      ) : (
-        <h3>To add new reservation please  --register-- or --login--</h3>
-      )}
-    </div>
+            </form>
+          </>
+        ) : (
+          <h4 className="title">
+            To add new reservation please{" "}
+            <Link to={`/register`}>
+              <button className="btn btn-purple btn-sm text-white">
+                REGISTER
+              </button>purple
+            </Link>{" "}
+            or{" "}
+            <Link to={`/login`}>
+              <button className="btn btn-purple btn-sm text-white">
+                LOGIN
+              </button>
+            </Link>
+          </h4>
+        )}
+      </div>
     </>
   );
 }
