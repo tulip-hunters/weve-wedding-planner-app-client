@@ -32,4 +32,9 @@ Students must submit the following deliverables in order for the project to be d
 - Present and demo your app during the Final Project presentations.
 
 
+### Further improvments
+- 
+- 
+-  
+
 
