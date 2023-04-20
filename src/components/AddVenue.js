@@ -83,7 +83,7 @@ function AddVenue(props) {
     <div className="container d-flex justify-content-center">
       <div>
         <div className="mb-3">
-          <h1 className="text-center">Add Your Venue</h1>
+          <h1 className="text-center title">Add Your Venue</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-outline mb-4  was-validated ">
               <span htmlFor="validationTextarea" className="form-label fw-bold">
