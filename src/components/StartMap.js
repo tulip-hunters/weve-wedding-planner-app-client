@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, useLoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
@@ -104,12 +105,6 @@ export default StartMap;
 
 // import React, { useState, useEffect } from 'react';
 // import { GoogleMap, useLoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
-// import PlacesAutocomplete from 'react-places-autocomplete';
-// import {
-//   geocodeByAddress,
-//   geocodeByPlaceId,
-//   getLatLng,
-// } from 'react-places-autocomplete';
 
 
 // const libraries = ["places", "directions", "places"];
@@ -122,7 +117,7 @@ export default StartMap;
 //   lng: 0
 // };
 
-// function Map() {
+// function StartMap() {
 //   const [location, setLocation] = useState(null);
 //   const [destination, setDestination] = useState("");
 //   const [directions, setDirections] = useState(null);
@@ -192,7 +187,7 @@ export default StartMap;
 //   );
 // }
 
-// export default Map;
+// export default StartMap;
 
 
 
