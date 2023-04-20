@@ -37,7 +37,7 @@ const ProfilePage = () => {
           <br />
           <p className="reservation-title" style={{background:"purple", color:"white"}}>YOUR RESERVATIONS:</p>
 
-          {user.reservations ? (
+          {user.reservations.length ? (
             user.reservations.map((reservation) => {
               const venueName = venues[reservation.venue];
               return (
@@ -56,7 +56,7 @@ const ProfilePage = () => {
               );
             })
           ) : (
-            <p className="reservation-title" style={{background:"purple", color:"white"}} >Currently there are no reservations to display</p>
+            <p className="reservation-title" style={{background:"purple", color:"white"}}>Currently there are no reservations to display</p>
           )}
         </>
       ) : (

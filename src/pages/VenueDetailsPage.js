@@ -86,6 +86,7 @@ function VenueDetailsPage() {
             <section>
               <AddReservation refreshVenue={getVenue} venueId={venueId} />
             </section>
+            <section>  <StartMap /></section>
             <section>
               {venueDetails && venueDetails.reservations.length >= 1 && (
                 <div className="row mb-12 ">
@@ -97,6 +98,8 @@ function VenueDetailsPage() {
                       <StartMap />
                     </section>
 
+                
+                  
                     <h4 className="align-items-center text-black">
                       Reservations
                     </h4>
