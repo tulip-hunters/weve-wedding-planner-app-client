@@ -52,7 +52,7 @@ function Navbar() {
               {isLoggedIn && (
                 <>
                 <li className="nav-item">
-                    <span className="nav-link text-white">{`HELLO, ${
+                    <span className="nav-link text-white">{`Hello, ${
                       user && user.name
                     }`}</span>
                   </li>

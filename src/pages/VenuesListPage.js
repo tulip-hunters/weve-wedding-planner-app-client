@@ -51,7 +51,7 @@ function VenuesListPage() {
                     className="col d-flex align-items-stretch"
                     key={venueDetails._id}
                   >
-                    <div className="card  shadow-sm">
+                    <div className="card shadow-sm">
                       {venueDetails.imageUrl ? (
                         <div className="bd-placeholder-img card-img-top">
                           <Image
@@ -83,7 +83,7 @@ function VenuesListPage() {
                         </p>
 
                         <Link to={`/venues/${venueDetails._id}`}>
-                          <button className="btn btn-purple text-white align-self-end">
+                          <button className="btn btn-purple text-white btn-sm align-self-end">
                             MORE DETAILS
                           </button>
                         </Link>

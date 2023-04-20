@@ -17,11 +17,12 @@
 }
 
 .btn-purple {
-  background-image: linear-gradient(to right,   rgb(183, 25, 170), rgb(49, 6, 11), rgb(183, 25, 170));
+  background-image: linear-gradient(to right, rgb(49, 6, 11), rgb(183, 25, 170), rgb(49, 6, 11));
 }
+
 .btn-purple:hover {
   font-weight: bolder;
-  background-image: linear-gradient(to right, rgb(49, 6, 11),  rgb(183, 25, 170), rgb(49, 6, 11));
+  background-image: linear-gradient(to right, rgb(183, 25, 170), rgb(49, 6, 11), rgb(49, 6, 11));
 }
 
 .title {

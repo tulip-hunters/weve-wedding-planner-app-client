@@ -140,7 +140,7 @@ function AddReservation(props) {
           </form>
         </>
       ) : (
-        <h3>Please login to add a reservation</h3>
+        <h3>To add new reservation please  --register-- or --login--</h3>
       )}
     </div>
     </>

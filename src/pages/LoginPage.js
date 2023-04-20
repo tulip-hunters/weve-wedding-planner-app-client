@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
 import authService from "./../services/auth.service";
 import Footer from "../components/Footer";
+import loginimage from "../images/login-pic.jpeg"
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
@@ -39,29 +40,47 @@ function LoginPage(props) {
 
   return (
     <>
-    <div className="LoginPage">
-      <h1>Login</h1>
-
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <button className="btn btn-purple text-white" type="submit">Login</button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/register"}>Register</Link>
-    </div>
-    <Footer />
+    
+      <div className="card col-xs-10 col-md-8 col-lg-6 m-5 mx-auto">
+        <img src={loginimage} className="card-img-top" alt="loginimage" />
+        <div className="card-body text-center">
+          <h1 className="card-title">LOGIN</h1>
+          <br />
+       
+  
+          <form onSubmit={handleLoginSubmit}>
+          <p>
+            <label>EMAIL</label>
+            </p>
+            <p>
+            <input className="col-8 " placeholder="email@example.com" type="email" name="email" value={email} onChange={handleEmail} />
+            </p>
+            <p>
+            <label>PASSWORD</label>
+            </p>
+            <p>
+            <input
+            className="col-8 " 
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+              placeholder="******"
+            />
+            </p>
+           
+  <p><button className="btn btn-purple text-white col-8" type="submit">Login</button></p>
+<br />
+<br />
+            
+          </form>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+  
+          <p>Don't have an account yet?</p>
+          <Link to={"/register"}>Register</Link>
+        </div>
+      </div>
+      <Footer />
     </>
   );
 }
