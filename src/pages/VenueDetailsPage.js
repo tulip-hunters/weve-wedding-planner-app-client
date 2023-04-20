@@ -6,6 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import venuesService from "../services/venues.service";
 import Footer from "../components/Footer";
 import StartMap from "../components/StartMap";
+import Spinner from 'react-bootstrap/Spinner';
 
 const defaultImageUrl =
   "https://images.pexels.com/photos/12846017/pexels-photo-12846017.jpeg";
@@ -129,13 +130,13 @@ function VenueDetailsPage() {
             </section>
           </div>
         </div>
-      ) : (
-        "Loading...."
-      )}
+      ) : <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+      }
       <Footer />
     </>
   );
 }
 
 export default VenueDetailsPage;
-
