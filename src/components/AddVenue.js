@@ -67,7 +67,6 @@ function AddVenue(props) {
       });
   };
 
-  // Move this function outside of handleSubmit function
   const handleOfferChange = (event) => {
     const offerValue = event.target.value;
     if (event.target.checked) {
@@ -328,7 +327,7 @@ function AddVenue(props) {
               </div>
             </label>
             <div>
-              <button className="btn btn-purple col-12 px-3 py-2 mt-4 text-white"> SAVE </button>
+              <button className="btn btn-purple col-12 px-3 py-2 mt-4 text-white">SUBMIT VENUE</button>
             </div>
           </form>
         </div>

@@ -5,6 +5,7 @@ import AddReservation from "../components/AddReservation";
 import { AuthContext } from "../context/auth.context";
 import venuesService from "../services/venues.service";
 import Footer from "../components/Footer";
+import StartMap from "../components/StartMap";
 
 const defaultImageUrl =
   "https://images.pexels.com/photos/12846017/pexels-photo-12846017.jpeg";
@@ -88,10 +89,14 @@ function VenueDetailsPage() {
             <section>
               {venueDetails && venueDetails.reservations.length >= 1 && (
                 <div className="row mb-12 ">
-                  <div className="card align-items-center bg-light ">
+                  <div className="card align-items-center bg-light "><br /><br />
+
+                  <StartMap />
+                  
                     <h4 className="align-items-center text-black">
                       Reservations
                     </h4>
+                    
                     {venueDetails &&
                       venueDetails.reservations.map((reservation) => (
                         <div
@@ -132,3 +137,4 @@ function VenueDetailsPage() {
 }
 
 export default VenueDetailsPage;
+
