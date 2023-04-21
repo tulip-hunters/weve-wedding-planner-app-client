@@ -33,8 +33,12 @@ Students must submit the following deliverables in order for the project to be d
 
 
 ### Further improvments
-- 
-- 
--  
+
+- To have full CRUD on the Reservations model;
+- Add profile Picture;
+- Add venues to favorites and add comments, likes;
+- Have 2 separate models for Users one as a Venue owner and one as a User of the app to make reservations adn keep track of them;
+- Implement reservations status "pending", "approved" or "cancelled";
 
 
+NOTE: Please note that by the time you visit our website the free trial period of the API key might have expired/free credit consumed therefore the functionality related to it might not work as expected.
